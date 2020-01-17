@@ -11,12 +11,12 @@ function suma(arr){
     //se crea variable para almacenar los numeros que se van sumando
     var sum = 0;
     for (let i = 0; i < numeros.length; i++){
-        sum += arr[i]
+        sum += arr[i];
     }
-    console.log( "la suma es: ", sum);
+    return sum
 
 }
-suma(numeros);
+console.log("la suma es: ",suma(numeros));
 
 //////////////////////////////////////////////////////////
 
@@ -63,15 +63,15 @@ reverse1(numeros);
 let num2 = [1,10,6,3,5]
 
 function maxNum(num2){
-    let n = [];
+    let n = num2[0];
     for(let i= 0;i <= num2.length; i++){
         if( n < num2[i]){
             n = num2[i];
         }
     }
-    console.log(n);
+    return n;
 }
- maxNum(num2);
+ console.log(maxNum(num2));
 
 //  Escribe una función que acepte como parámetro un arreglo de enteros y regrese el número menor del arreglo.
 
@@ -86,9 +86,9 @@ function minNum(num2){
             min = num2[i];
         }
     }
-    console.log(min);
+    return min;
 }
- minNum(num2);
+ console.log(minNum(num2));
 
 //  Escribe una función que acepte como parámetro un arreglo de cadenas de texto y regrese todos los textos concatenados.
 
@@ -120,10 +120,7 @@ concatenar(textos);
 let grades = [8, 7, 10]
 
 function getAverage(grades){
-    var total = 0;
-    for (let i = 0; i < grades.length; i++){
-        total += grades[i]
-    }
+    let total = suma(grades);
     return total/grades.length;
 }
 
@@ -141,10 +138,10 @@ let arregloB = [4, 5, 6];
 
 function unir (lista1, lista2){
     let arregloC =[...lista1, ...lista2]
-    console.log (arregloC)
+    return arregloC;
 }
 
-unir(arregloA, arregloB);
+console.log(unir(arregloA, arregloB));
 
 // Escribe una función que acepte como parámetro dos arreglos de enteros y regrese los elementos que tienen en común.
 
@@ -166,10 +163,10 @@ function getCommons(arr1, arr2){
             }
         }
     }
-    console.log(iguales);
+    return iguales;
     }
 
-getCommons(arregloC, arregloD);
+console.log(getCommons(arregloC, arregloD));
 
 //
 // Escribe una función que acepte como parámetro un arreglo de enteros y regrese otro arreglo reemplazando todos los 0 por -1.
@@ -181,31 +178,44 @@ getCommons(arregloC, arregloD);
 let enteros = [1,2,0,3,4];
 
 function replace (arr3) {
-    for(let i = 0; i < arr3.length; i++){
-        if(arr3[i] === 0){
-            arr3[i]--
+    let copia =[...arr3]
+    for(let i = 0; i < copia.length; i++){
+        if(copia[i] === 0){
+            copia[i]--
         }
     }
-    return enteros;
+    return copia;
 }
 
-replace(enteros);
+console.log(replace(enteros));
 
-// Escribe una función que acepte como parámetro un arreglo de enteros y regrese el primer entero repetido, sino existe -1.
+// Escribe una función que acepte como parámetro un arreglo de enteros y regrese el primer entero repetido, 
+//sino existe -1.
 
 // Ejemplo:
 // const a = firstDuplicated([1,2,2,3,4]);
 // // a = 2
-let numerals = [1,2,2,3,4];
-
 function doubles(n){
     let res = [];
     for(let i = 0; i < n.length; i++){
-        for (let j= i + 1 ; j <n.length; j++){
-            if(n[i] === n[j] ){
-                res.push(n[i]);
-            }
+      let isRepeated = false;
+
+      for(let k = 0; k < res.length; k++){
+        if(n[i] === res[k]){
+          isRepeated = true;
         }
+      }
+
+      if (isRepeated) {
+        continue;
+      } 
+
+      for(let j= i + 1 ; j < n.length; j++){
+          if(n[i] === n[j] ){
+              res.push(n[i]);
+              break;
+          }
+      }
     }
     return res;
 }
