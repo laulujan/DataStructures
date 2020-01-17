@@ -195,6 +195,8 @@ console.log(replace(enteros));
 // Ejemplo:
 // const a = firstDuplicated([1,2,2,3,4]);
 // // a = 2
+let numerals = [1,2,2,3,4,1,5,8,2,3];
+
 function doubles(n){
     let res = [];
     for(let i = 0; i < n.length; i++){
